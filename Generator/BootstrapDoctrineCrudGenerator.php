@@ -48,7 +48,7 @@ class BootstrapDoctrineCrudGenerator extends DoctrineCrudGenerator
      *
      * @param string $dir The path to the folder that hosts templates in the bundle
      */
-    private function generateIndexView($dir)
+    protected function generateIndexView($dir)
     {
         $parts = explode('\\', $this->entity);
         $entityClass = array_pop($parts);
@@ -62,7 +62,7 @@ class BootstrapDoctrineCrudGenerator extends DoctrineCrudGenerator
             'route_prefix'      => $this->routePrefix,
             'route_name_prefix' => $this->routeNamePrefix,
             'bundle'            => $this->bundle->getName(),
-            'entity_class'      => $entityClass,
+            'entity_class'      => $entityClass
         ));
     }
 
