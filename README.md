@@ -39,7 +39,7 @@ Generate CRUD backoffice
 
 A CRUD interface, already stylized with bootstrap, can be easily generated with this command.
 
-php app/console doctrine:generate:crud:twitter-bootstrap
+    php app/console doctrine:generate:crud:twitter-bootstrap
 
 Then you have to:
 
@@ -49,7 +49,7 @@ Then you have to:
    * Determine the format to use (annotation, yml, php, xml)
    * Determine the route prefix
 
-Before anything else, you should integrate bootstrap files into your web directory.
-Download it at http://twitter.github.com/bootstrap/assets/bootstrap.zip and extract in your web directory, which is at the root of the project.
+Before anything else, you should download bootstrap archive at http://twitter.github.com/bootstrap/assets/bootstrap.zip.
+Then extract into your web directory which is at the root of the project.
 
-Your bundle is efficient.
+Your CRUD entity is generated, as well as the layout.
