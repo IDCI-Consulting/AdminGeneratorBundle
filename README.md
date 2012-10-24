@@ -3,7 +3,7 @@ AdminGeneratorBundle
 
 Add Symfony2 command to extends crud generator
 
-Instalation
+Installation
 ===========
 
 To install this bundle please follow the next steps:
@@ -33,3 +33,23 @@ Enable the bundle in your application kernel:
     }
 
 Now the Bundle is installed.
+
+Generate CRUD backoffice
+========================
+
+A CRUD interface, already stylized with bootstrap, can be easily generated with this command.
+
+php app/console doctrine:generate:crud:twitter-bootstrap
+
+Then you have to:
+
+   * Indicate for which entity you want to generate a CRUD.
+   Exemple : IdciBlogBundle:Article
+   * Indicate weather or not you want to generate "write actions" such as "new, update and delete"
+   * Determine the format to use (annotation, yml, php, xml)
+   * Determine the route prefix
+
+Before anything else, you should integrate bootstrap files into your web directory.
+Download it at http://twitter.github.com/bootstrap/assets/bootstrap.zip and extract in your web directory, which is at the root of the project.
+
+Your bundle is efficient.
