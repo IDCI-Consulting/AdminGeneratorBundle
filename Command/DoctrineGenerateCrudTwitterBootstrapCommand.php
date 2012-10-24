@@ -1,6 +1,8 @@
 <?php
 
 namespace IDCI\Bundle\AdminGeneratorBundle\Command;
+
+use IDCI\Bundle\AdminGeneratorBundle\Generator\BootstrapDoctrineCrudGenerator;
 use Sensio\Bundle\GeneratorBundle\Generator\DoctrineCrudGenerator;
 use Sensio\Bundle\GeneratorBundle\Command\GenerateDoctrineCrudCommand;
 
@@ -14,7 +16,7 @@ class DoctrineGenerateCrudTwitterBootstrapCommand extends GenerateDoctrineCrudCo
 
     protected function getGenerator()
     {
-        $generator = new DoctrineCrudGenerator(
+        $generator = new BootstrapDoctrineCrudGenerator(
             $this->getContainer()->get('filesystem'),
             __DIR__.'/../Resources/skeleton/crud/bootstrap'
         );
