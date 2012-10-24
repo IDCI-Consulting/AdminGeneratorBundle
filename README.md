@@ -44,12 +44,12 @@ A CRUD interface, already stylized with bootstrap, can be easily generated with 
 Then you have to:
 
    * Indicate for which entity you want to generate a CRUD.
-   Exemple : IdciBlogBundle:Article
+   Exemple : IdciMyBundle:Entity
    * Indicate weather or not you want to generate "write actions" such as "new, update and delete"
    * Determine the format to use (annotation, yml, php, xml)
    * Determine the route prefix
 
-Before anything else, you should download bootstrap archive at http://twitter.github.com/bootstrap/assets/bootstrap.zip.
-Then extract into your web directory which is at the root of the project.
+Before anything else, you should download the bootstrap archive at http://twitter.github.com/bootstrap/assets/bootstrap.zip.
+Then extract it into your /web directory which is at the root of the project.
 
 Your CRUD entity is generated, as well as the layout.
