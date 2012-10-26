@@ -53,3 +53,13 @@ Before anything else, you should download the bootstrap archive at http://twitte
 Then extract it into your /web directory which is at the root of the project.
 
 Your CRUD entity is generated, as well as the layout.
+
+You may want to be able to delete an entry directly from the index. In order to do it:
+
+    * go to Sensio\Bundle\GeneratorBundle\Generator;
+    * Change visibility of generateIndexView() and getRecordActions() functions from private to protected.
+    * Generate your entity CRUD as it is indicate above.
+
+Then, you can choose which actions you want in the index view, among edit, delete and show action by editing IDCI\Bundle\AdminGeneratorBundle\Generator\BootstrapDoctrineCrudGenerator.php at line 92.
+    
+    return in_array($item, array('show', 'edit', 'delete'));
