@@ -1,4 +1,4 @@
-{{ '{% extends "IDCIAdminGeneratorBundle:bootstrap:adminbase.html.twig" %}' }}
+{{ '{% extends "'~ bundle ~'::adminbase.html.twig" %}' }}
 
 {{ '{% block body %}' }}
 <div class="page-header">
@@ -54,7 +54,7 @@
 <ul>
     <li>
         <a class="btn btn-primary" href="{{ "{{ path('"~ route_name_prefix ~"_new') }}" }}">
-            Create a new entry
+            {{ '{% trans %}' }}Create a new entry{{ '{% endtrans %}' }}
         </a>
     </li>
 </ul>
