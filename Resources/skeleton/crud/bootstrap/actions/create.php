@@ -19,6 +19,14 @@
             $em->persist($entity);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add(
+                'info',
+                $this->get('translator')->trans('%entity%[%id%] has been created', array(
+                    '%entity%' => '{{ entity }}',
+                    '%id%'     => $entity->getId()
+                ))
+            );
+
             {% if 'show' in actions -%}
                 return $this->redirect($this->generateUrl('{{ route_name_prefix }}_show', array('id' => $entity->getId())));
             {%- else -%}
