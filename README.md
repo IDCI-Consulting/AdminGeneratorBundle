@@ -39,12 +39,12 @@ Now, you have to install bootstrap. You can either:
 
 Or
 
- * Add bootstrap_source to your parameters.yml
+Add bootstrap_source to your parameters.yml
 
     parameters:
         bootstrap_source:  http://twitter.github.com/bootstrap/assets/bootstrap.zip
 
- * Then run the following command to automatically install bootstrap assets in your web directory:
+Then run the following command to automatically install bootstrap assets in your web directory:
 
     php app/console admin-generator:install:bootstrap-files
 
@@ -56,12 +56,6 @@ Note: We hope this will be fixed soon !
 
 Go to Sensio\Bundle\GeneratorBundle\Generator\DoctrineCrudGenerator.php
 You have to change the visibility from private to protected of theses functions :
-
- * generateIndexView
- * generateShowView
- * generateNewView
- * generateEditView
- * getRecordActions
 
     // Before
     private function generateIndexView($dir)
