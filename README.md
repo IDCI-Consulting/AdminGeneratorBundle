@@ -32,7 +32,28 @@ Enable the bundle in your application kernel:
         );
     }
 
-Now the Bundle is installed.
+Now, you have to install bootstrap. You can either: 
+
+    * Download bootstrap at http://twitter.github.com/bootstrap/assets/bootstrap.zip
+    * Then extract it into your /web directory which is at the root of the project.
+
+Or
+    * Add "bootstrap_source:  http://twitter.github.com/bootstrap/assets/bootstrap.zip" to your parameters.yml
+    * Run the following command: php app/console admin-generator:install:bootstrap-files
+
+Finally, go to Sensio\Bundle\GeneratorBundle\Generator\DoctrineCrudGenerator.php
+This class is the one this bundle extends. You have to change the visibility from private to protected of theses functions :
+
+    * generateIndexView
+    * generateShowView
+    * generateEditView
+    * generateNewView
+    * generateDeleteFormView
+    * generateDeleteFormView
+    * generateAdminBaseView
+    * getRecordActions
+
+The Bundle is installed.
 
 Generate CRUD backoffice
 ========================
@@ -49,17 +70,8 @@ Then you have to:
    * Determine the format to use (annotation, yml, php, xml)
    * Determine the route prefix
 
-Before anything else, you should download the bootstrap archive at http://twitter.github.com/bootstrap/assets/bootstrap.zip.
-Then extract it into your /web directory which is at the root of the project.
-
 Your CRUD entity is generated, as well as the layout.
 
-You may want to be able to delete an entry directly from the index. In order to do it:
-
-    * go to Sensio\Bundle\GeneratorBundle\Generator;
-    * Change visibility of generateIndexView() and getRecordActions() functions from private to protected.
-    * Generate your entity CRUD as it is indicate above.
-
-Then, you can choose which actions you want in the index view, among edit, delete and show action by editing IDCI\Bundle\AdminGeneratorBundle\Generator\BootstrapDoctrineCrudGenerator.php at line 92.
+You may want to be able to delete an entry directly from the index. You can choose which actions you want in the index view, among edit, delete and show action by editing IDCI\Bundle\AdminGeneratorBundle\Generator\BootstrapDoctrineCrudGenerator.php at line 181.
     
     return in_array($item, array('show', 'edit', 'delete'));
