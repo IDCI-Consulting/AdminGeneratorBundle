@@ -15,7 +15,7 @@ class InstallBootstrapCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('idci:install:bootstrap-files')
+            ->setName('admin-generator:install:bootstrap-files')
             ->setDescription('Install bootstrap files')
             ->setHelp(<<<EOT
 The <info>%command.name%</info> command download and install the bootstrap files
