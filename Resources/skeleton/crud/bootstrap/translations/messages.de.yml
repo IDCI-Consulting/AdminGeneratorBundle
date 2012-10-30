@@ -10,4 +10,6 @@ Back to the list: Zurück zu liste
 %entity% creation: %entity% erstellung
 %entity% edit: Bearbeiten einer %entity%
 %entity%[%id%] has been created: %entity%[%id%] erstellt wurde
+%entity%[%id%] has been deleted: %entity%[%id%] entfernt wurde
+%entity%[%id%] has been updated: %entity%[%id%] aktualisiert wurde
 %entity% list: %entity% liste
