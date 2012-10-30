@@ -34,24 +34,63 @@ Enable the bundle in your application kernel:
 
 Now, you have to install bootstrap. You can either: 
 
-    * Download bootstrap at http://twitter.github.com/bootstrap/assets/bootstrap.zip
-    * Then extract it into your /web directory which is at the root of the project.
+ * Download bootstrap at http://twitter.github.com/bootstrap/assets/bootstrap.zip
+ * Then extract it into your /web directory which is at the root of the project.
 
 Or
-    * Add "bootstrap_source:  http://twitter.github.com/bootstrap/assets/bootstrap.zip" to your parameters.yml
-    * Run the following command: php app/console admin-generator:install:bootstrap-files
+ * Add "bootstrap_source:  http://twitter.github.com/bootstrap/assets/bootstrap.zip" to your parameters.yml
+ * Run the following command: php app/console admin-generator:install:bootstrap-files
 
 Finally, go to Sensio\Bundle\GeneratorBundle\Generator\DoctrineCrudGenerator.php
-This class is the one this bundle extends. You have to change the visibility from private to protected of theses functions :
+You have to change the visibility from private to protected of theses functions :
 
-    * generateIndexView
-    * generateShowView
-    * generateEditView
-    * generateNewView
-    * generateDeleteFormView
-    * generateDeleteFormView
-    * generateAdminBaseView
-    * getRecordActions
+ * generateIndexView
+ * generateShowView
+ * generateEditView
+ * generateNewView
+ * generateDeleteFormView
+ * generateDeleteFormView
+ * generateAdminBaseView
+ * getRecordActions
+
+For instance : 
+
+    /**
+     * Generates the show.html.twig template in the final bundle.
+     *
+     * @param string $dir The path to the folder that hosts templates in the bundle
+     */
+    protected function generateShowView($dir)
+    {
+        $this->renderFile($this->skeletonDir, 'views/show.html.twig', $dir.'/show.html.twig', array(
+            'dir'               => $this->skeletonDir,
+            'entity'            => $this->entity,
+            'fields'            => $this->metadata->fieldMappings,
+            'actions'           => $this->actions,
+            'route_prefix'      => $this->routePrefix,
+            'route_name_prefix' => $this->routeNamePrefix,
+        ));
+    }
+
+Become
+
+    /**
+     * Generates the show.html.twig template in the final bundle.
+     *
+     * @param string $dir The path to the folder that hosts templates in the bundle
+     */
+    private function generateShowView($dir)
+    {
+        $this->renderFile($this->skeletonDir, 'views/show.html.twig', $dir.'/show.html.twig', array(
+            'dir'               => $this->skeletonDir,
+            'entity'            => $this->entity,
+            'fields'            => $this->metadata->fieldMappings,
+            'actions'           => $this->actions,
+            'route_prefix'      => $this->routePrefix,
+            'route_name_prefix' => $this->routeNamePrefix,
+        ));
+    }
+    
 
 The Bundle is installed.
 
@@ -64,11 +103,11 @@ A CRUD interface, already stylized with bootstrap, can be easily generated with 
 
 Then you have to:
 
-   * Indicate for which entity you want to generate a CRUD.
+ * Indicate for which entity you want to generate a CRUD.
    Exemple : IdciMyBundle:Entity
-   * Indicate weather or not you want to generate "write actions" such as "new, update and delete"
-   * Determine the format to use (annotation, yml, php, xml)
-   * Determine the route prefix
+ * Indicate weather or not you want to generate "write actions" such as "new, update and delete"
+ * Determine the format to use (annotation, yml, php, xml)
+ * Determine the route prefix
 
 Your CRUD entity is generated, as well as the layout.
 
