@@ -5,10 +5,10 @@
 {{ '{{ parent() }}' }}
 
 <div class="page-header">
-  <h1>{{ '{% trans %}' }} {{ entity }} list{{ '{% endtrans %}' }}</h1>
+  <h1>{{ '{% trans %}' }}List{{ '{% endtrans %}' }}</h1>
 </div>
 
-<table class="table table-bordered table-striped records_list">
+<table class="table table-bordered table-striped table-condensed records_list">
     <thead>
         <tr>
         {%- for field, metadata in fields %}
@@ -41,9 +41,7 @@
 
         {%- if loop.last %}
 
-            <td>
-                {%- include "views/others/actions.html.twig" %}
-            </td>
+        {%- include "views/others/actions.html.twig" %}
 
         {%- endif %}
     {%- endfor %}
