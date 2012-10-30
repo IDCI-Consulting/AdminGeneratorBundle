@@ -22,6 +22,14 @@
 
             $em->remove($entity);
             $em->flush();
+            
+            $this->get('session')->getFlashBag()->add(
+                'info',
+                $this->get('translator')->trans('%entity%[%id%] has been deleted', array(
+                    '%entity%' => '{{ entity }}',
+                    '%id%'     => $id
+                ))
+            );
         }
 
         return $this->redirect($this->generateUrl('{{ route_name_prefix }}'));

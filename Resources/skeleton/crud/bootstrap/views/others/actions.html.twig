@@ -6,7 +6,7 @@
                         {% if('delete' == action) %}
                         {{ "{% render '"~ bundle ~":"~ entity_class ~":deleteForm' with { 'id': entity.id } %}" }}
                         {% else %}
-                        <a class="btn" href="{{ "{{ path('"~ route_name_prefix ~"_"~ action ~"', { 'id': entity.id }) }}" }}">{{ action }}</a>
+                        <a class="btn" href="{{ "{{ path('"~ route_name_prefix ~"_"~ action ~"', { 'id': entity.id }) }}" }}">{{ '{% trans %}' }}{{ action }}{{ '{% endtrans %}' }}</a>
                         {% endif %}
                     </li>
 

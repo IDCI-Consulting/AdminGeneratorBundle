@@ -1,4 +1,13 @@
 Create a new entry: Créer une nouvelle entrée
 Edit: Editer
+edit: editer
+show: afficher
 Delete: Supprimer
+delete: supprimer
+Actions: Actions
+Create: Créer
+Back to the list: Retourner à la liste
+%entity% creation: création de %entity%
+%entity% edit: editer un %entity%
 %entity%[%id%] has been created: %entity%[%id%] a bien été créé
+%entity% list: Liste de %entity%

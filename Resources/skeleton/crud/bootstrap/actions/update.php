@@ -26,7 +26,16 @@
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('{{ route_name_prefix }}_edit', array('id' => $id)));
+        $this->get('session')->getFlashBag()->add(
+            'info',
+            $this->get('translator')->trans('%entity%[%id%] has been updated', array(
+                '%entity%' => '{{ entity }}',
+                '%id%'     => $entity->getId()
+            ))
+        );
+
+        return $this->redirect($this->generateUrl('{{ route_name_prefix }}_edit', array('id' => $id)));
+        
         }
 
 {% if 'annotation' == format %}

@@ -5,13 +5,13 @@
 {{ '{{ parent() }}' }}
 
 <div class="page-header">
-  <h1>{{ entity }} creation</h1>
+  <h1>{{ '{% trans %}' }}{{ entity }} creation{{ '{% endtrans %}' }}</h1>
 </div>
 
 <form action="{{ "{{ path('"~ route_name_prefix ~"_create') }}" }}" method="post" {{ "{{ form_enctype(form) }}" }}>
     {{ "{{ form_widget(form) }}" }}
     <p>
-        <button type="submit" class="btn btn-primary">Create</button>
+        <button type="submit" class="btn btn-primary">{{ '{% trans %}' }}Create{{ '{% endtrans %}' }}</button>
     </p>
 </form>
 
