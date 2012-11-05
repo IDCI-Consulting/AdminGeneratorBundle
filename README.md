@@ -3,6 +3,12 @@ AdminGeneratorBundle
 
 Add Symfony2 command to extends crud generator
 
+Requirements:
+=============
+
+This bundle extends `Sensio\Bundle\GeneratorBundle\Generator\DoctrineCrudGenerator`
+And need `php5-intl`.
+
 Installation
 ===========
 
