@@ -68,10 +68,10 @@ EOT
         $dest_dir = dirname(realpath($zip_file));
         while(($zip_entry = zip_read($zip)) !== false) {
             $output->writeln('<info>Unpacking '.zip_entry_name($zip_entry).'</info>');
-            $file = substr(zip_entry_name($zip_entry), strrpos(zip_entry_name($zip_entry), DIRECTORY_SEPARATOR)+1);
+            $last = strrpos(zip_entry_name($zip_entry), '/');
+            $file = substr(zip_entry_name($zip_entry), $last+1);
 
-            if(strpos(zip_entry_name($zip_entry), DIRECTORY_SEPARATOR) !== false) {
-                $last = strrpos(zip_entry_name($zip_entry), DIRECTORY_SEPARATOR);
+            if(strpos(zip_entry_name($zip_entry), '/') !== false) {
                 $dir = $dest_dir.DIRECTORY_SEPARATOR.substr(zip_entry_name($zip_entry), 0, $last);
                 if(!is_dir($dir)) {
                     if(!mkdir($dir, 0755, true)) {
