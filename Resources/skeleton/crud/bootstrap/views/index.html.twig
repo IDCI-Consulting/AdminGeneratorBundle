@@ -5,8 +5,12 @@
 {{ '{{ parent() }}' }}
 
 <div class="page-header">
-  <h1>{{ '{% trans %}' }}List{{ '{% endtrans %}' }}</h1>
+    <h1>{{ '{% trans %}' }}List{{ '{% endtrans %}' }}</h1>
 </div>
+
+<p>
+    {{ "{{ pagerfanta(pager, 'twitter_bootstrap') }}" }}
+</p>
 
 <table class="table table-bordered table-striped table-condensed records_list">
     <thead>
@@ -21,7 +25,7 @@
         </tr>
     </thead>
     <tbody>
-    {{ '{% for entity in entities %}' }}
+    {{ '{% for entity in pager.currentPageResults %}' }}
         <tr>
 
     {%- for field, metadata in fields %}
