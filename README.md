@@ -8,6 +8,7 @@ Requirements:
 
 This bundle extends `Sensio\Bundle\GeneratorBundle\Generator\DoctrineCrudGenerator`
 And need `php5-intl`.
+The pagination is made with the pagerfanta bundle provide by white october
 
 Installation
 ===========
@@ -18,7 +19,9 @@ First add the dependencie to your `composer.json` file:
 
     "require": {
         ...
-        "idci/admin-generator-bundle": "dev-master"
+        "pagerfanta/pagerfanta":           "dev-master",
+        "white-october/pagerfanta-bundle": "dev-master"
+        "idci/admin-generator-bundle":     "dev-master"
     },
 
 Then install the bundle with the command:
@@ -34,6 +37,7 @@ Enable the bundle in your application kernel:
     {
         $bundles = array(
             // ...
+            new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new IDCI\Bundle\AdminGeneratorBundle\IDCIAdminGeneratorBundle(),
         );
     }
