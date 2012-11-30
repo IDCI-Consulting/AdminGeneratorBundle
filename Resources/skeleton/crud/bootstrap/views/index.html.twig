@@ -12,6 +12,16 @@
     {{ "{{ pagerfanta(pager, 'twitter_bootstrap') }}" }}
 </p>
 
+{% if 'new' in actions %}
+<ul class="list_actions">
+    <li>
+        <a class="btn btn-primary" href="{{ "{{ path('"~ route_name_prefix ~"_new') }}" }}">
+            {{ '{% trans %}' }}Create a new entry{{ '{% endtrans %}' }}
+        </a>
+    </li>
+</ul>
+{% endif %}
+
 <table class="table table-bordered table-striped table-condensed records_list">
     <thead>
         <tr>
