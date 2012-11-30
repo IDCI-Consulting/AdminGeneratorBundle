@@ -34,7 +34,7 @@
 
         return $this->redirect($this->generateUrl('{{ route_name_prefix }}'));
     }
-    
+
     /**
      * Display {{ entity }} deleteForm.
      *

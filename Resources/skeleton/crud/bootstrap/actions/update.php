@@ -11,7 +11,6 @@
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('{{ bundle }}:{{ entity }}')->find($id);
 
         if (!$entity) {
@@ -26,16 +25,15 @@
             $em->persist($entity);
             $em->flush();
 
-        $this->get('session')->getFlashBag()->add(
-            'info',
-            $this->get('translator')->trans('%entity%[%id%] has been updated', array(
-                '%entity%' => '{{ entity }}',
-                '%id%'     => $entity->getId()
-            ))
-        );
+            $this->get('session')->getFlashBag()->add(
+                'info',
+                $this->get('translator')->trans('%entity%[%id%] has been updated', array(
+                    '%entity%' => '{{ entity }}',
+                    '%id%'     => $entity->getId()
+                ))
+            );
 
-        return $this->redirect($this->generateUrl('{{ route_name_prefix }}_edit', array('id' => $id)));
-        
+            return $this->redirect($this->generateUrl('{{ route_name_prefix }}_edit', array('id' => $id)));
         }
 
 {% if 'annotation' == format %}

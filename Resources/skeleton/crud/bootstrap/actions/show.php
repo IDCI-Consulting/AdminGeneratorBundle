@@ -10,14 +10,13 @@
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('{{ bundle }}:{{ entity }}')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find {{ entity }} entity.');
         }
-{% if 'delete' in actions %}
 
+{% if 'delete' in actions %}
         $deleteForm = $this->createDeleteForm($id);
 {% endif %}
 
