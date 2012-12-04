@@ -17,10 +17,9 @@
         $pager->setMaxPerPage($this->container->getParameter('max_per_page'));
 
         try {
-            $pager->setCurrentPage($request->query->get('page', 1)); 
-        }
-        catch (NotValidCurrentPageException $e) {
-            throw new NotFoundHttpException(); 
+            $pager->setCurrentPage($request->query->get('page', 1));
+        } catch (NotValidCurrentPageException $e) {
+            throw new NotFoundHttpException();
         }
 
 {% if 'annotation' == format %}
