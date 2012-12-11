@@ -34,7 +34,7 @@
 
         return $this->redirect($this->generateUrl('{{ route_name_prefix }}'));
     }
-    
+
     /**
      * Display {{ entity }} deleteForm.
      *
@@ -45,7 +45,6 @@
     public function deleteFormAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('{{ bundle }}:{{ entity }}')->find($id);
 
         if (!$entity) {

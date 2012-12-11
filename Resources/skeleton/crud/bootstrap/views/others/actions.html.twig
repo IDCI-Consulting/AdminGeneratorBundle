@@ -1,5 +1,6 @@
 {%- for action in record_actions %}
-    <td>
+
+        <td>
         {% if('delete' == action) %}
             {{ "{% render '"~ bundle ~":"~ entity_class ~":deleteForm' with { 'id': entity.id } %}" }}
         {% elseif('show' == action)%}
@@ -7,5 +8,6 @@
         {% else %}
             <a class="btn btn-block btn-primary" href="{{ "{{ path('"~ route_name_prefix ~"_"~ action ~"', { 'id': entity.id }) }}" }}">{{ '{% trans %}' }}{{ action }}{{ '{% endtrans %}' }}</a>
         {% endif %}
-    </td>
+        </td>
+
 {%- endfor %}
