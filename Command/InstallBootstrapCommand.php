@@ -56,44 +56,22 @@ EOT
 
         return true;
     }
-    
-    protected function unzip($zip_file, $output) 
+
+    protected function unzip($zip_file, $output)
     {
         $zip = zip_open($zip_file);
         if(!is_resource($zip)) {
-            $output->writeln('<error>Unable to open zip file</error>');
-
-            return false;
+            $output->writeln('<error>Unable to unzip'.pathinfo($zip_file, PATHINFO_FILENAME).' - Not a resource</error>');
         }
-        $dest_dir = dirname(realpath($zip_file));
-        while(($zip_entry = zip_read($zip)) !== false) {
-            $output->writeln('<info>Unpacking '.zip_entry_name($zip_entry).'</info>');
-            $last = strrpos(zip_entry_name($zip_entry), '/');
-            $file = substr(zip_entry_name($zip_entry), $last+1);
 
-            if(strpos(zip_entry_name($zip_entry), '/') !== false) {
-                $dir = $dest_dir.DIRECTORY_SEPARATOR.substr(zip_entry_name($zip_entry), 0, $last);
-                if(!is_dir($dir)) {
-                    if(!mkdir($dir, 0755, true)) {
-                        $output->writeln('<error>Unable to create '.$dir.'</error>');
-
-                        return false;
-                    }
-                }
-
-                if(strlen(trim($file)) > 0) {
-                    if(!file_put_contents($dir."/".$file, zip_entry_read($zip_entry, zip_entry_filesize($zip_entry)))) {
-                        $output->writeln('<error>Unable to unzip '.$dir."/".$file.'</error>');
-
-                        return false;
-                    }
-                }
-            }
-            else {
-                file_put_contents($file, zip_entry_read($zip_entry, zip_entry_filesize($zip_entry)));
-            }
+        $zip = new \ZipArchive();
+        if (!$zip->open($zip_file)) {
+            $output->writeln('<error>Unable to unzip'.pathinfo($zip_file, PATHINFO_FILENAME).'</error>');
         }
-        
+
+        $zip->extractTo(pathinfo($zip_file, PATHINFO_DIRNAME));
+        $zip->close();
+
         return true;
-    } 
+    }
 }
