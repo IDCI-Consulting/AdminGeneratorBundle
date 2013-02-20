@@ -15,12 +15,12 @@ Installation
 
 To install this bundle please follow the next steps:
 
-First add the dependencie to your `composer.json` file:
+First add the dependencies to your `composer.json` file:
 
     "require": {
         ...
         "pagerfanta/pagerfanta":           "dev-master",
-        "white-october/pagerfanta-bundle": "dev-master"
+        "white-october/pagerfanta-bundle": "dev-master",
         "idci/admin-generator-bundle":     "dev-master"
     },
 
@@ -42,6 +42,13 @@ Enable the bundle in your application kernel:
         );
     }
 
+As you can see, we use [WhiteOctoberPagerFantaBundle](https://github.com/whiteoctober/WhiteOctoberPagerfantaBundle) to paginate list results.
+So you have to define the `max_per_page` parameter in your `app/config/parameters.yml`
+
+    parameters:
+        ...
+        max_per_page:  25
+
 Now, you have to install bootstrap. You can either: 
 
  * Download bootstrap at http://twitter.github.com/bootstrap/assets/bootstrap.zip
@@ -49,9 +56,10 @@ Now, you have to install bootstrap. You can either:
 
 Or
 
-Add bootstrap_source to your parameters.yml
+Add `bootstrap_source` to your `app/config/parameters.yml`
 
     parameters:
+        ...
         bootstrap_source:  http://twitter.github.com/bootstrap/assets/bootstrap.zip
 
 Then run the following command to automatically install bootstrap assets in your web directory:
@@ -64,8 +72,8 @@ Fix DoctrineCrudGenerator function visibility
 
 Note: We hope this will be fixed soon !
 
-Go to Sensio\Bundle\GeneratorBundle\Generator\DoctrineCrudGenerator.php
-You have to change the visibility from private to protected of theses functions :
+Go to the vendor `Sensio\Bundle\GeneratorBundle\Generator\DoctrineCrudGenerator.php`
+You have to change the visibility from private to protected of theses functions:
 
     // Before
     private function generateIndexView($dir)
