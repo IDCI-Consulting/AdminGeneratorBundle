@@ -17,37 +17,44 @@ To install this bundle please follow the next steps:
 
 First add the dependencies to your `composer.json` file:
 
-    "require": {
-        ...
-        "pagerfanta/pagerfanta":           "dev-master",
-        "white-october/pagerfanta-bundle": "dev-master",
-        "idci/admin-generator-bundle":     "dev-master"
-    },
+```json
+"require": {
+    ...
+    "pagerfanta/pagerfanta":           "dev-master",
+    "white-october/pagerfanta-bundle": "dev-master",
+    "idci/admin-generator-bundle":     "dev-master"
+},
+```
 
 Then install the bundle with the command:
 
-    php composer update
+```sh
+php composer update
+```
 
 Enable the bundle in your application kernel:
 
-    <?php
-    // app/AppKernel.php
+```php
+<?php
+// app/AppKernel.php
 
-    public function registerBundles()
-    {
-        $bundles = array(
-            // ...
-            new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
-            new IDCI\Bundle\AdminGeneratorBundle\IDCIAdminGeneratorBundle(),
-        );
-    }
-
+public function registerBundles()
+{
+    $bundles = array(
+        // ...
+        new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
+        new IDCI\Bundle\AdminGeneratorBundle\IDCIAdminGeneratorBundle(),
+    );
+}
+```
 As you can see, we use [WhiteOctoberPagerFantaBundle](https://github.com/whiteoctober/WhiteOctoberPagerfantaBundle) to paginate list results.
 So you have to define the `max_per_page` parameter in your `app/config/parameters.yml`
 
-    parameters:
-        ...
-        max_per_page:  25
+```yml
+parameters:
+    ...
+    max_per_page:  25
+```
 
 Now, you have to install bootstrap. You can either: 
 
@@ -58,13 +65,17 @@ Or
 
 Add `bootstrap_source` to your `app/config/parameters.yml`
 
-    parameters:
-        ...
-        bootstrap_source:  http://twitter.github.com/bootstrap/assets/bootstrap.zip
+```yml
+parameters:
+    ...
+    bootstrap_source:  http://twitter.github.com/bootstrap/assets/bootstrap.zip
+```
 
 Then run the following command to automatically install bootstrap assets in your web directory:
 
-    php app/console admin-generator:install:bootstrap-files
+```sh
+php app/console admin-generator:install:bootstrap-files
+```
 
 
 Fix DoctrineCrudGenerator function visibility
@@ -75,57 +86,61 @@ Note: We hope this will be fixed soon !
 Go to the vendor `Sensio\Bundle\GeneratorBundle\Generator\DoctrineCrudGenerator.php`
 You have to change the visibility from private to protected of theses functions:
 
-    // Before
-    private function generateIndexView($dir)
-    {
-      ...
-    // After
-    protected function generateIndexView($dir)
-    {
-      ...
+```php
+// Before
+private function generateIndexView($dir)
+{
+  ...
+// After
+protected function generateIndexView($dir)
+{
+  ...
 
-    // Before
-    private function generateShowView($dir)
-    {
-      ...
-    // After
-    protected function generateShowView($dir)
-    {
-      ...
+// Before
+private function generateShowView($dir)
+{
+  ...
+// After
+protected function generateShowView($dir)
+{
+  ...
 
-    // Before
-    private function generateNewView($dir)
-    {
-      ...
-    // After
-    protected function generateNewView($dir)
-    {
-      ...
+// Before
+private function generateNewView($dir)
+{
+  ...
+// After
+protected function generateNewView($dir)
+{
+  ...
 
-    // Before
-    private function generateEditView($dir)
-    {
-      ...
-    // After
-    protected function generateEditView($dir)
-    {
-      ...
+// Before
+private function generateEditView($dir)
+{
+  ...
+// After
+protected function generateEditView($dir)
+{
+  ...
 
-    // Before
-    private function getRecordActions($dir)
-    {
-      ...
-    // After
-    protected function getRecordActions($dir)
-    {
-      ...
+// Before
+private function getRecordActions($dir)
+{
+  ...
+// After
+protected function getRecordActions($dir)
+{
+  ...
+```
 
 Generate CRUD backoffice
 ========================
 
 A CRUD interface, already stylized with bootstrap, can be easily generated with this command.
 
-    php app/console doctrine:generate:crud:twitter-bootstrap
+```sh
+php app/console doctrine:generate:crud:twitter-bootstrap
+```
 
 Then you have to:
 
