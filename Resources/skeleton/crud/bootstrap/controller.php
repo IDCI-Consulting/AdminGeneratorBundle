@@ -34,25 +34,25 @@ class {{ entity_class }}Controller extends Controller
 {
 
     {%- if 'index' in actions %}
-        {%- include 'actions/index.php.twig' %}
+        {%- include 'actions/index.php' %}
     {%- endif %}
 
     {%- if 'show' in actions %}
-        {%- include 'actions/show.php.twig' %}
+        {%- include 'actions/show.php' %}
     {%- endif %}
 
     {%- if 'new' in actions %}
-        {%- include 'actions/new.php.twig' %}
-        {%- include 'actions/create.php.twig' %}
+        {%- include 'actions/new.php' %}
+        {%- include 'actions/create.php' %}
     {%- endif %}
 
     {%- if 'edit' in actions %}
-        {%- include 'actions/edit.php.twig' %}
-        {%- include 'actions/update.php.twig' %}
+        {%- include 'actions/edit.php' %}
+        {%- include 'actions/update.php' %}
     {%- endif %}
 
     {%- if 'delete' in actions %}
-        {%- include 'actions/delete.php.twig' %}
+        {%- include 'actions/delete.php' %}
     {%- endif %}
 
 }

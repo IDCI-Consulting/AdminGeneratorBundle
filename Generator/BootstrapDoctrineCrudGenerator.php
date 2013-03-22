@@ -42,13 +42,12 @@ class BootstrapDoctrineCrudGenerator extends DoctrineCrudGenerator
      * @param string            $format           The configuration format (xml, yaml, annotation)
      * @param string            $routePrefix      The route name prefix
      * @param array             $needWriteActions Wether or not to generate write actions
-     * @param boolean           $forceOverwrite   To force the template overwrite if already exist
      *
      * @throws \RuntimeException
      */
-    public function generate(BundleInterface $bundle, $entity, ClassMetadataInfo $metadata, $format, $routePrefix, $needWriteActions, $forceOverwrite)
+    public function generate(BundleInterface $bundle, $entity, ClassMetadataInfo $metadata, $format, $routePrefix, $needWriteActions)
     {
-        parent::generate($bundle, $entity, $metadata, $format, $routePrefix, $needWriteActions, $forceOverwrite);
+        parent::generate($bundle, $entity, $metadata, $format, $routePrefix, $needWriteActions);
         $dir = sprintf('%s/Resources/views', $this->bundle->getPath());
         $this->generateAdminBaseView($dir);
         $dir = sprintf('%s/Resources/translations', $this->bundle->getPath());
@@ -67,7 +66,7 @@ class BootstrapDoctrineCrudGenerator extends DoctrineCrudGenerator
         $parts = explode('\\', $this->entity);
         $entityClass = array_pop($parts);
 
-        $this->renderFile($this->skeletonDir, 'views/index.html.twig.twig', $dir.'/index.html.twig', array(
+        $this->renderFile($this->skeletonDir, 'views/index.html.twig', $dir.'/index.html.twig', array(
             'dir'               => $this->skeletonDir,
             'entity'            => $this->entity,
             'fields'            => $this->metadata->fieldMappings,
@@ -87,7 +86,7 @@ class BootstrapDoctrineCrudGenerator extends DoctrineCrudGenerator
      */
     protected function generateShowView($dir)
     {
-        $this->renderFile($this->skeletonDir, 'views/show.html.twig.twig', $dir.'/show.html.twig', array(
+        $this->renderFile($this->skeletonDir, 'views/show.html.twig', $dir.'/show.html.twig', array(
             'dir'               => $this->skeletonDir,
             'entity'            => $this->entity,
             'fields'            => $this->metadata->fieldMappings,
@@ -105,7 +104,7 @@ class BootstrapDoctrineCrudGenerator extends DoctrineCrudGenerator
      */
     protected function generateNewView($dir)
     {
-        $this->renderFile($this->skeletonDir, 'views/new.html.twig.twig', $dir.'/new.html.twig', array(
+        $this->renderFile($this->skeletonDir, 'views/new.html.twig', $dir.'/new.html.twig', array(
             'dir'               => $this->skeletonDir,
             'route_prefix'      => $this->routePrefix,
             'route_name_prefix' => $this->routeNamePrefix,
@@ -122,7 +121,7 @@ class BootstrapDoctrineCrudGenerator extends DoctrineCrudGenerator
      */
     protected function generateEditView($dir)
     {
-        $this->renderFile($this->skeletonDir, 'views/edit.html.twig.twig', $dir.'/edit.html.twig', array(
+        $this->renderFile($this->skeletonDir, 'views/edit.html.twig', $dir.'/edit.html.twig', array(
             'dir'               => $this->skeletonDir,
             'route_prefix'      => $this->routePrefix,
             'route_name_prefix' => $this->routeNamePrefix,
@@ -139,7 +138,7 @@ class BootstrapDoctrineCrudGenerator extends DoctrineCrudGenerator
      */
     protected function generateDeleteFormView($dir)
     {
-        $this->renderFile($this->skeletonDir, 'views/deleteForm.html.twig.twig', $dir.'/deleteForm.html.twig', array(
+        $this->renderFile($this->skeletonDir, 'views/deleteForm.html.twig', $dir.'/deleteForm.html.twig', array(
             'dir'               => $this->skeletonDir,
             'route_prefix'      => $this->routePrefix,
             'route_name_prefix' => $this->routeNamePrefix,
@@ -154,8 +153,8 @@ class BootstrapDoctrineCrudGenerator extends DoctrineCrudGenerator
      */
     protected function generateAdminBaseView($dir)
     {
-        if(!is_file($dir.'/adminbase.html.twig.twig')) {
-            $this->renderFile($this->skeletonDir, 'views/adminbase.html.twig.twig', $dir.'/adminbase.html.twig', array());
+        if(!is_file($dir.'/adminbase.html.twig')) {
+            $this->renderFile($this->skeletonDir, 'views/adminbase.html.twig', $dir.'/adminbase.html.twig', array());
         }
     }
 
