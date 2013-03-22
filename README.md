@@ -78,61 +78,6 @@ php app/console admin-generator:install:bootstrap-files
 ```
 
 
-Fix DoctrineCrudGenerator function visibility
-=============================================
-
-Note: We hope this will be fixed soon !
-
-Go to the vendor `Sensio\Bundle\GeneratorBundle\Generator\DoctrineCrudGenerator.php`
-You have to change the visibility from private to protected of theses functions:
-
-```php
-// Before
-private function generateIndexView($dir)
-{
-  ...
-// After
-protected function generateIndexView($dir)
-{
-  ...
-
-// Before
-private function generateShowView($dir)
-{
-  ...
-// After
-protected function generateShowView($dir)
-{
-  ...
-
-// Before
-private function generateNewView($dir)
-{
-  ...
-// After
-protected function generateNewView($dir)
-{
-  ...
-
-// Before
-private function generateEditView($dir)
-{
-  ...
-// After
-protected function generateEditView($dir)
-{
-  ...
-
-// Before
-private function getRecordActions($dir)
-{
-  ...
-// After
-protected function getRecordActions($dir)
-{
-  ...
-```
-
 Generate CRUD backoffice
 ========================
 
