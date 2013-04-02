@@ -6,7 +6,7 @@
         {% elseif('show' == action)%}
             <a class="btn btn-block" href="{{ "{{ path('"~ route_name_prefix ~"_"~ action ~"', { 'id': entity.id }) }}" }}">{{ '{% trans %}' }}{{ action }}{{ '{% endtrans %}' }}</a>
         {% else %}
-            <a class="btn btn-block btn-primary" href="{{ "{{ path('"~ route_name_prefix ~"_"~ action ~"', { 'id': entity.id }) }}" }}">{{ '{% trans %}' }}{{ action }}{{ '{% endtrans %}' }}</a>
+            <a class="btn btn-primary" href="{{ "{{ path('"~ route_name_prefix ~"_"~ action ~"', { 'id': entity.id }) }}" }}">{{ '{% trans %}' }}{{ action }}{{ '{% endtrans %}' }}</a>
         {% endif %}
         </td>
 
