@@ -4,7 +4,7 @@
  *
  * @author:  Baptiste BOUCHEREAU <baptiste.bouchereau@idci-consulting.fr> 
  * @author:  Gabriel BONDAZ <gabriel.bondaz@idci-consulting.fr>
- * @licence: GPL
+ * @license: GPL
  *
  */
 
