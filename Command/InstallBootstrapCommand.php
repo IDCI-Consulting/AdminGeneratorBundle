@@ -65,19 +65,19 @@ EOT
         return true;
     }
 
-    protected function unzip($zip_file, $output)
+    protected function unzip($zipFile, $output)
     {
-        $zip = zip_open($zip_file);
+        $zip = zip_open($zipFile);
         if(!is_resource($zip)) {
-            $output->writeln('<error>Unable to unzip'.pathinfo($zip_file, PATHINFO_FILENAME).' - Not a resource</error>');
+            $output->writeln('<error>Unable to unzip'.pathinfo($zipFile, PATHINFO_FILENAME).' - Not a resource</error>');
         }
 
         $zip = new \ZipArchive();
-        if (!$zip->open($zip_file)) {
-            $output->writeln('<error>Unable to unzip'.pathinfo($zip_file, PATHINFO_FILENAME).'</error>');
+        if (!$zip->open($zipFile)) {
+            $output->writeln('<error>Unable to unzip'.pathinfo($zipFile, PATHINFO_FILENAME).'</error>');
         }
 
-        $zip->extractTo(pathinfo($zip_file, PATHINFO_DIRNAME));
+        $zip->extractTo(pathinfo($zipFile, PATHINFO_DIRNAME));
         $zip->close();
 
         return true;
