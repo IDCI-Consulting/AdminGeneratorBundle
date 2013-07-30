@@ -22,7 +22,7 @@ First add the dependencies to your `composer.json` file:
     ...
     "pagerfanta/pagerfanta":           "dev-master",
     "white-october/pagerfanta-bundle": "dev-master",
-    "idci/admin-generator-bundle":     "2.2.*"
+    "idci/admin-generator-bundle":     "dev-master"
 },
 ```
 

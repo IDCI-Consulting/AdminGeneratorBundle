@@ -22,7 +22,7 @@ class DoctrineGenerateCrudTwitterBootstrapCommand extends GenerateDoctrineCrudCo
         $this->setName('doctrine:generate:crud:twitter-bootstrap');
     }
 
-    protected function getGenerator()
+    protected function getGenerator($bundle = null)
     {
         $generator = new BootstrapDoctrineCrudGenerator(
             $this->getContainer()->get('filesystem'),
